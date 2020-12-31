@@ -16,9 +16,32 @@ export const JobsCountText = styled.span`
   font-weight: 500;
 `;
 
+const PrimaryDarkRGBA = (a) => `rgba(71,56,128,${a || 1})`;
+
 export const JobListingsWrapper = styled.div`
-  margin: 8px;
+  margin: 16px 8px;
   cursor: pointer;
+  height: 100vh;
+  overflow: overlay;
+  overflow-x: hidden;
+  padding: 0 12px 0 0;
+  /* width */
+  &::-webkit-scrollbar {
+    width: 4px;
+    height: 2px;
+  }
+  /* Track */
+  &::-webkit-scrollbar-track {
+    background: "#f1f1f1";
+  }
+  /* Handle */
+  &::-webkit-scrollbar-thumb {
+    background: ${() => PrimaryDarkRGBA(0.5)};
+  }
+  /* Handle on hover */
+  &::-webkit-scrollbar-thumb:hover {
+    background: ${() => PrimaryDarkRGBA(0.75)};
+  }
 `;
 
 export const Job = styled.div`
@@ -82,7 +105,7 @@ export const JobPostingDetails = styled.div`
 
 export const PostDetails = styled.div`
   display: none;
-  @media (min-width: 1280px) {
+  @media (min-width: 768px) {
     display: flex;
     flex-direction: row;
   }
