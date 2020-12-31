@@ -32,6 +32,7 @@ import {
   SaveJob,
   SortJobs,
   SortText,
+  Wrap,
 } from "./styles";
 
 const JobContent = ({ searchText }) => {
@@ -97,7 +98,7 @@ const JobContent = ({ searchText }) => {
         <SortJobs>
           <SortText>Sort by</SortText>
           {Object.keys(sortData).map((ele) => (
-            <SortText other onMouseDown={() => setSelectedSort(ele)}>
+            <SortText other onMouseDown={() => setSelectedSort(ele)} key={ele}>
               {ele} {sortData[ele] === "asc" && <Up />}
               {sortData[ele] === "desc" && <Down />}
             </SortText>
@@ -106,7 +107,7 @@ const JobContent = ({ searchText }) => {
       </JobsHeading>
       <JobListingsWrapper>
         {jobslist.map((ele, index) => (
-          <>
+          <Wrap key={ele.name}>
             <Job onMouseDown={() => setSelectedIndex(index)}>
               <Place>{ele.items[0].state}</Place>
               <Description>
@@ -115,12 +116,12 @@ const JobContent = ({ searchText }) => {
             </Job>
             {selectedIndex === index &&
               ele.items.map((job) => (
-                <JobItemWrapper>
+                <JobItemWrapper key={job.job_id}>
                   <JobItems job={job} setSelectedJobId={setSelectedJobId} />
                   {jobId === job.job_id && <PostDataWrapper job={job} />}
                 </JobItemWrapper>
               ))}
-          </>
+          </Wrap>
         ))}
       </JobListingsWrapper>
     </JobsWrapper>

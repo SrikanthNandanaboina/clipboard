@@ -23,10 +23,10 @@ const Footer = () => {
   return (
     <FooterWrapper>
       {Items.map((ele) => (
-        <ContentWrapper>
+        <ContentWrapper key={ele.title}>
           <Title>{ele.title}</Title>
           {ele.content.map((text) => (
-            <Content>{text}</Content>
+            <Content key={text}>{text}</Content>
           ))}
         </ContentWrapper>
       ))}
