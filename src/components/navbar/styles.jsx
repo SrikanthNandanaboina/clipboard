@@ -17,7 +17,7 @@ export const LeftNav = styled.div`
 export const MenuIcon = styled.span`
   width: 24px;
 
-  @media (min-width: 1280px) {
+  @media (min-width: 1024px) {
     display: none;
   }
 `;
@@ -46,7 +46,7 @@ export const ProfileIconText = styled.span`
 
 export const MenuItems = styled.div`
   display: none;
-  @media (min-width: 1280px) {
+  @media (min-width: 1024px) {
     display: block;
   }
 `;
