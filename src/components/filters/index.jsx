@@ -46,27 +46,25 @@ const Filter = () => {
   return (
     <FilterList>
       {filterTypeState.map(({ key, expanded, count }, index) => (
-        <>
-          <FilterWrapper>
-            <FilterType>{key.split("_")}</FilterType>
-            {filters[key].slice(0, count).map((filterData) => (
-              <FilterData>
-                <FilterDataName>{filterData.key}</FilterDataName>
-                <FilterDataCount>{filterData.doc_count}</FilterDataCount>
-              </FilterData>
+        <FilterWrapper key={key}>
+          <FilterType>{key.split("_")}</FilterType>
+          {filters[key].slice(0, count).map((filterData) => (
+            <FilterData key={filterData.key}>
+              <FilterDataName>{filterData.key}</FilterDataName>
+              <FilterDataCount>{filterData.doc_count}</FilterDataCount>
+            </FilterData>
+          ))}
+          {filters[key].length >= count &&
+            (expanded ? (
+              <ShowText onMouseDown={() => setFiltersData(index, 10)}>
+                Show less
+              </ShowText>
+            ) : (
+              <ShowText onMouseDown={() => setFiltersData(index, -1)}>
+                Show more
+              </ShowText>
             ))}
-            {filters[key].length >= count &&
-              (expanded ? (
-                <ShowText onMouseDown={() => setFiltersData(index, 10)}>
-                  Show less
-                </ShowText>
-              ) : (
-                <ShowText onMouseDown={() => setFiltersData(index, -1)}>
-                  Show more
-                </ShowText>
-              ))}
-          </FilterWrapper>
-        </>
+        </FilterWrapper>
       ))}
     </FilterList>
   );

@@ -159,3 +159,5 @@ export const SortText = styled.span`
   text-transform: capitalize;
   color: ${({ other }) => (other ? "black" : "#b3b3b3")};
 `;
+
+export const Wrap = styled.div``;
